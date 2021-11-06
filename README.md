@@ -7,10 +7,10 @@
 > The default Yara rule file is `YaraRules/index.yar`.
 
 ## Initial setup
-```
+```sh
 cd ~
-sudo apt-get update && sudo apt-get upgrade
-sudo apt-get install virtualenv git
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get install virtualenv git -y
 git clone https://github.com/Saket-Upadhyay/ProcPuppy.git
 cd ProcPuppy
 virtualenv ProcPuppyEnv
@@ -20,14 +20,14 @@ deactivate
 ```
 
 ## Run
-```
+```sh
 cd ~/ProcPuppy
 source ProcPuppyEnv/bin/activate
-python procpuppy.py
+python ProcPuppy.py
 ```
 
 ## Global Variables
-```
+```python
 YARARULEFILE = "<YOUR VALID YARA FILE HERE>"
 NUMBEROFTHREADS = <NUMBER OF THREADS YOU WANT, must be integer>
 ENABLEYARAINCLUDE= <True/False> (Enables or Disables 'include' capabilities of the yara compiler.)
