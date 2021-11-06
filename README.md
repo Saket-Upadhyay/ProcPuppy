@@ -1,7 +1,8 @@
 # ProcPuppy
 Multi-threaded Yara-based process memory scanner for *nix systems.
 
-> By default it scans the exe and fd/* symlinks, you can add your own list too.
+> By default it scans the exe and fd/* symlinks, but you can add your own list too.
+> The default Yara rule file is `YaraRules/index.yar`.
 
 ## Initial setup
 ```
@@ -55,4 +56,5 @@ Tested on:
  - [x] Ubuntu 20.4
  - [x]  WSL 2.0 on Windows 10 Pro for Workstations 21H1 BUILD:19043.1288
 
-> Presented at [PyCode Conference](https://pycode-conference.org/) 2021 (Online)
+> Presented at [PyCode Conference](https://pycode-conference.org/) 2021 (Online).
+> See [Saket-Upadhyay/Talks_and_Presentation](https://github.com/Saket-Upadhyay/Talks_and_Presentation) for presentation slides and credits.
