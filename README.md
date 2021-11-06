@@ -61,4 +61,6 @@ Tested on:
 > Will be discussed at [PyCode Conference](https://pycode-conference.org/) 2021 (Online).
 > See [Saket-Upadhyay/Talks_and_Presentation](https://github.com/Saket-Upadhyay/Talks_and_Presentation) for presentation slides and credits.
 
+> exploit.png: 'in-image PhP' payload in "Test Malicious App" folder is created using [CUPPS](https://github.com/Saket-Upadhyay/CustomPhpPayloadSignature)
+
 > _Thanks to macrovector for the base puppy vector in the logo, I downloaded it from www.freepik.com, then edited it for my use._
