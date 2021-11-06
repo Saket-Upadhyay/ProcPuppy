@@ -1,15 +1,16 @@
 
 import yara # star of the show
-from pathlib import Path #to work with /proc file paths easily
-from queue import Queue #to manage process listings; we used Queue because once fetched the element will be removed, hence no two threads will have same element, We can also use any other Data Structure. 
+from pathlib import Path # to work with /proc file paths easily
+from queue import Queue # to manage process listings; we used Queue because once fetched the element will be removed, hence no two threads will have same element, We can also use any other Data Structure. 
 
-import threading #needed for multi-threading awesomeness
-from time import sleep #who doesn't need sleep?
+import threading # needed for multi-threading awesomeness
+from time import sleep # who doesn't need some sleep?
 
 
 #USER DEFINED VARIABLES
 YARARULEFILE = "YaraRules/index.yar"
 NUMBEROFTHREADS = 6
+ENABLEYARAINCLUDE=True
 
 
 #Other configurations
@@ -27,7 +28,7 @@ class MainYaraThreadFunction(threading.Thread):
 
 	def __init__(self):
 		threading.Thread.__init__(self)
-		self.rules = yara.compile(filepath=YARARULEFILE, includes=True)
+		self.rules = yara.compile(filepath=YARARULEFILE, includes=ENABLEYARAINCLUDE)
 
 	def run(self):
 		while True:
