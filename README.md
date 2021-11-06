@@ -1,5 +1,7 @@
-# ProcPuppy
-Multi-threaded Yara-based process memory scanner for *nix systems.
+<!-- # ProcPuppy -->
+<!-- Multi-threaded Yara-based process memory scanner for *nix systems. -->
+
+![](https://github.com/Saket-Upadhyay/ProcPuppy/blob/main/ProcPuppy.png)
 
 > By default it scans the exe and fd/* symlinks, but you can add your own list too.
 > The default Yara rule file is `YaraRules/index.yar`.
