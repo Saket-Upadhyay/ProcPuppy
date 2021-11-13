@@ -58,7 +58,9 @@ Tested on:
  - [x] Ubuntu 20.4
  - [x]  WSL 2.0 on Windows 10 Pro for Workstations 21H1 BUILD:19043.1288
 
-> Presented at [PyCode Conference](https://pycode-conference.org/) 2021 (Online).
+> Will be discussed at [PyCode Conference](https://pycode-conference.org/) 2021 (Online).
 > See [Saket-Upadhyay/Talks_and_Presentation](https://github.com/Saket-Upadhyay/Talks_and_Presentation) for presentation slides and credits.
+
+> exploit.png: 'in-image PhP' payload in "Test Malicious App" folder is created using [CUPPS](https://github.com/Saket-Upadhyay/CustomPhpPayloadSignature)
 
 > _Thanks to macrovector for the base puppy vector in the logo, I downloaded it from www.freepik.com, then edited it for my use._
