@@ -24,7 +24,6 @@
 import yara # star of the show
 from pathlib import Path # to work with /proc file paths easily
 from queue import Queue # to manage process listings; we used Queue because once fetched the element will be removed, hence no two threads will have same element, We can also use any other Data Structure. 
-
 import threading # needed for multi-threading awesomeness
 from time import sleep # who doesn't need some sleep?
 
@@ -37,20 +36,19 @@ ENABLEYARAINCLUDE=True	# This should be True if you want to add your rules by ad
 
 #Other configurations
 yara.set_config(max_strings_per_rule=20000, stack_size=32768)
-lock = threading.Lock()
-MapperQueue = Queue()
+lock = threading.Lock() #important to update counter when using one variable with multiple threads.
+MapperQueue = Queue() #Queue init.
 SCANCOUNT = 0
 
 # Main function that each thread will run
 class MainYaraThreadFunction(threading.Thread):
 
-	# yara callback function
-	def YaraCallback(self,data):
-		print('[+] Rule: {}, MAP: {}, Strings: {}'.format(data.get('rule'), self._file, data.get('strings')))
-
 	def __init__(self):
 		threading.Thread.__init__(self)
 		self.rules = yara.compile(filepath=YARARULEFILE, includes=ENABLEYARAINCLUDE)
+
+	def YaraCallback(self,data): 	# yara callback function, this will be called after each positive hit.
+		print('✔ Rule: {}, File: {}, Strings: {}'.format(data.get('rule'), self._file, data.get('strings')))	
 
 	def run(self):
 		while True:
@@ -63,7 +61,7 @@ class MainYaraThreadFunction(threading.Thread):
 
 	def scan(self,_file):
 		try:
-			# OG debug tactic lol
+			# OG debug tactic xD
 			# print(_file)
 			self.rules.match(_file, callback=self.YaraCallback, which_callbacks=yara.CALLBACK_MATCHES)
 		except yara.Error:
@@ -88,7 +86,7 @@ for x in Path('/proc').iterdir():
 
 
 
-print('[!] {} Processes loaded\n[!] Init threads...'.format(MapperQueue.qsize()))
+print('ℹ {} Processes loaded\n[!] Initialising threads...'.format(MapperQueue.qsize())) #print the number of elements in the Queue
 
 for _ in range(NUMBEROFTHREADS):
 	_ = MainYaraThreadFunction()
@@ -97,8 +95,9 @@ for _ in range(NUMBEROFTHREADS):
 
 sleep(3)
 
+# Loop for each element of the Queue (for each PID directory)
 while not MapperQueue.empty():
-	print('[%] Scanned: {} | Queue size: {} | Active Threads: {}'.format(SCANCOUNT, MapperQueue.qsize(), threading.active_count()-1))
-	sleep(10)
+	print('➖ Scanned: {} | Queue size: {} | Active Threads: {}'.format(SCANCOUNT, MapperQueue.qsize(), threading.active_count()-1))
+	sleep(10) #anti-spam haha, otherwise the screen will be bombarded with useless info.
 
 MapperQueue.join()
