@@ -30,7 +30,7 @@ from time import sleep # who doesn't need some sleep?
 
 #USER DEFINED VARIABLES
 YARARULEFILE = "YaraRules/index.yar"
-NUMBEROFTHREADS = 6		# A name suggests, 
+NUMBEROFTHREADS = 6		# A name suggests
 ENABLEYARAINCLUDE=True	# This should be True if you want to add your rules by adding them as imports in index.yar
 
 

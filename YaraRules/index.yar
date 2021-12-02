@@ -1,2 +1,2 @@
-include "PhPinImages"
-include "CustomExeSig"
+include "PhPinImages.yar"
+include "CustomExeSig.yar"
